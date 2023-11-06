@@ -1,0 +1,17 @@
+tasks:
+  - name: terraform
+    before: |
+      source ./bin/install_terraform_cli.sh
+      source ./bin/generate_tfrc_credentials.sh
+      source ./bin/set_tf_alias.sh
+      cp /workspace/2-tier-architecture-terraform/terraform.tfvars.example /workspace/3-tier-architecture/terraform.tfvars
+  - name: aws-cli
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    before: |
+      source ./bin/install_aws_cli.sh
+vscode:
+  extensions:
+    - amazonwebservices.aws-toolkit-vscode
+    - hashicorp.terraform
+    - yzhang.markdown-all-in-one
