@@ -20,4 +20,4 @@ sudo apt update
 
 sudo apt-get install terraform -y
 
-cd /workspace/3-tier-architecture
+cd /workspace/2-tier-architecture-terraform

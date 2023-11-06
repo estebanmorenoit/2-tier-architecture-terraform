@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /workspace/3-tier-architecture
+cd /workspace/2-tier-architecture-terraform
 # Check if the alias already exists in the .bash_profile
 grep -q 'alias tf="terraform"' ~/.bash_profile
 
