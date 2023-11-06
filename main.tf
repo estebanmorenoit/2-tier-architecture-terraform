@@ -1,7 +1,9 @@
+# Create the networking module for VPC and subnets.
 module "networking" {
   source = "./modules/networking"
 }
 
+# Create the load balancer module and pass required variables.
 module "load_balancer" {
   source                = "./modules/load_balancer"
   alb_sg_id             = module.networking.alb_sg_id
@@ -14,6 +16,7 @@ module "load_balancer" {
   alb_listener_protocol = "HTTP"
 }
 
+# Create the EC2 Auto Scaling module and pass required variables.
 module "ec2_auto_scaling" {
   source            = "./modules/ec2_auto_scaling"
   asg_sg_id         = module.networking.asg_sg_id
@@ -22,6 +25,7 @@ module "ec2_auto_scaling" {
   alb_tg_arn        = module.load_balancer.alb_tg_arn
 }
 
+# Create the database module for RDS instance and pass required variables.
 module "database" {
   source               = "./modules/database"
   private_subnet1_id   = module.networking.private_subnet1_id

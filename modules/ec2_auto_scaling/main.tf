@@ -1,3 +1,4 @@
+# Create an AWS Launch Template for the Auto Scaling Group (ASG).
 resource "aws_launch_template" "lt_asg" {
   name                   = var.lt_asg_name
   image_id               = var.lt_asg_ami
@@ -7,6 +8,7 @@ resource "aws_launch_template" "lt_asg" {
   user_data              = filebase64("${path.root}/install-apache.sh")
 }
 
+# Create an AWS Auto Scaling Group (ASG) to manage instances based on the Launch Template.
 resource "aws_autoscaling_group" "asg" {
   name                = var.asg_name
   max_size            = var.asg_max
@@ -16,9 +18,10 @@ resource "aws_autoscaling_group" "asg" {
 
   launch_template {
     id      = aws_launch_template.lt_asg.id
-    version = "$Latest"
+    version = "$Latest"  # Latest version of the Launch Template.
   }
 
+  # Create a tag to identify instances in the Auto Scaling Group.
   tag {
     key                 = "Name"
     value               = var.asg_tag_name
@@ -26,7 +29,8 @@ resource "aws_autoscaling_group" "asg" {
   }
 }
 
-resource "aws_autoscaling_attachment" "asg_tg_attachment" {
+# Attach the Auto Scaling Group to the Application Load Balancer's Target Group.
+resource "aws_autoscaling_attachment" asg_tg_attachment {
   autoscaling_group_name = aws_autoscaling_group.asg.id
   lb_target_group_arn    = var.alb_tg_arn
 }

@@ -1,3 +1,4 @@
+# Create a VPC with the specified CIDR block and default tenancy.
 resource "aws_vpc" "two-tierVPC" {
   cidr_block       = var.vpc_cidr
   instance_tenancy = "default"
@@ -7,6 +8,7 @@ resource "aws_vpc" "two-tierVPC" {
   }
 }
 
+# Create the first public subnet in the specified VPC, with a public IP mapping.
 resource "aws_subnet" "public_subnet1" {
   vpc_id                  = aws_vpc.two-tierVPC.id
   cidr_block              = var.public_subnet1_cidr
@@ -18,6 +20,7 @@ resource "aws_subnet" "public_subnet1" {
   }
 }
 
+# Create the second public subnet in the specified VPC, with a public IP mapping.
 resource "aws_subnet" "public_subnet2" {
   vpc_id                  = aws_vpc.two-tierVPC.id
   cidr_block              = var.public_subnet2_cidr
@@ -29,6 +32,7 @@ resource "aws_subnet" "public_subnet2" {
   }
 }
 
+# Create the first private subnet in the specified VPC.
 resource "aws_subnet" "private_subnet1" {
   vpc_id            = aws_vpc.two-tierVPC.id
   cidr_block        = var.private_subnet1_cidr
@@ -39,6 +43,7 @@ resource "aws_subnet" "private_subnet1" {
   }
 }
 
+# Create the second private subnet in the specified VPC.
 resource "aws_subnet" "private_subnet2" {
   vpc_id            = aws_vpc.two-tierVPC.id
   cidr_block        = var.private_subnet2_cidr
