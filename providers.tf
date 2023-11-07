@@ -9,7 +9,7 @@ terraform {
     organization = "estebanmorenoit"
 
     workspaces {
-      name = "3-tier-architecture"
+      name = "2-tier-architecture-terraform"
     }
   }
 }
