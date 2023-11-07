@@ -1,6 +1,15 @@
 # Create the networking module for VPC and subnets.
 module "networking" {
-  source = "./modules/networking"
+  source               = "./modules/networking"
+  vpc_cidr             = "10.0.0.0/16"
+  public_subnet1_cidr  = "10.0.1.0/24"
+  public_subnet2_cidr  = "10.0.2.0/24"
+  private_subnet1_cidr = "10.0.3.0/24"
+  private_subnet2_cidr = "10.0.4.0/24"
+  availability_zone_1  = "eu-west-2a"
+  availability_zone_2  = "eu-west-2b"
+  public_rt_cidr       = "0.0.0.0/0"
+  private_rt_cidr      = "0.0.0.0/0"
 }
 
 # Create the load balancer module and pass required variables.
