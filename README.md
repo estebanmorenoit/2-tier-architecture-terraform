@@ -116,10 +116,6 @@ Email Address - [morenoramirezesteban@gmail.com](mailto:morenoramirezesteban@gma
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/estebanmorenoit/terraform-beginner-bootcamp-2023.svg?style=for-the-badge
